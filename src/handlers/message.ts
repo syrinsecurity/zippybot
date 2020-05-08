@@ -12,20 +12,24 @@ export class Handler {
 
 	execute = (client: Client): void => {
 
+		let handlers = new Handlers();
+		let commands = handlers.loadCommands(client);
+
 		client.on("message", async (message: Message) => {
 
-			if (message.content == `${prefix}reload`) {
+			if (message.author.bot == true) return;
+			if (!message.content.startsWith(prefix)) return;
 
-				if (masters.includes(message.author.id) == false) {
-					return Unauthorised(message);
-				}
+			let cmd = message.content.substr(prefix.length).split(" ");
+			cmd[0] = cmd[0].toLocaleLowerCase();
 
-				client.removeAllListeners();
-				let handlers = new Handlers();
-				handlers.loadAll(client);
-
-				Embed(message, "All event handlers reloaded.")
+			let command = commands.get(cmd[0]) || commands.find(c => c.aliases && c.aliases.includes(cmd[0]))
+			if (!command) {
+				return Embed(message, "That command does not exist.");
 			}
+
+			
+			command.execute(message, cmd);
 		});
 	};
 }

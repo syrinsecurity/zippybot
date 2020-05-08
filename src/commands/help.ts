@@ -1,5 +1,6 @@
 import { prefix } from "../config";
-import { Message } from "discord.js";
+import { Message, Client } from "discord.js";
+import { Embed } from "../templates/embed";
 
 export class Command {
 
@@ -17,7 +18,13 @@ export class Command {
 
 	enabled: boolean = true
 
-	execute(message: Message, cmd: string[]): void {
-		
+	private _client: Client;
+
+	constructor(client: Client) {
+		this._client = client;
+	}
+
+	async execute(message: Message, cmd: string[]): Promise<void> {
+		Embed(message, "Hi");
 	};
 }
