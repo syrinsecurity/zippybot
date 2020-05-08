@@ -3,7 +3,6 @@ import { token, prefix, masters} from "./config";
 import { Handlers } from './loader';
 
 var client: Client = new Client();
-globalThis.client = client;
 
 var handlers = new Handlers();
 

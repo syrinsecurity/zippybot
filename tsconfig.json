@@ -19,6 +19,7 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 
+		"strict": true,
 		"watch": true,
 	},
 

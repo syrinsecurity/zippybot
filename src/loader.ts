@@ -5,8 +5,6 @@ import { Command } from "./commands/help";
 
 export class Handlers {
 
-	loaded: string[];
-
 	loadAll = loadHandlers;
 
 	loadCommands = loadCommands;

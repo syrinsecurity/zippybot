@@ -12,9 +12,13 @@ export function getGroups(message: Message): string[] {
 	if (message.channel.type == "dm") return [...groups, "user"];
 	groups.push("member");
 
+	//Check if Message.member is NULL
+	if (!message.member) return groups;
+
 	if (roleBasedAuth) {
 		//Role based group assignment
 		let roles = message.member.roles.cache;
+
 		if (roles.has("708386103618437200")) groups.push("mod"); //TODO: update hard coded ids to db
 		if (roles.has("708324993116667926")) groups.push("admin");
 	} else {
@@ -22,6 +26,9 @@ export function getGroups(message: Message): string[] {
 		let perms = message.member.permissions;
 		if(perms.has("KICK_MEMBERS")) groups.push("mod");
 		if(perms.has("ADMINISTRATOR")) groups.push("admin");
+
+		//Check if message.guild is NULL
+		if(!message.guild) return groups;
 		if(message.guild.ownerID == message.author.id) groups.push("owner");
 	}
 	
