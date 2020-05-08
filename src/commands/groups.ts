@@ -7,15 +7,16 @@ import { getGroups } from '../modules/auth';
 
 export class Command {
 
-	name: string = "test";
+	name: string = "groups";
 	aliases: string[] = [];
-	description: string = "test command";
+	description: string = "Lists all the groups you are in";
 	category: string = "maintenance";
-	usage: string = `${prefix}test`
+	usage: string = `${prefix}groups`
 	hidden: boolean = false;
 
 	authorisation: string[] = [
-		"root"
+		"user",
+		"member"
 	];
 
 	enabled: boolean = true

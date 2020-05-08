@@ -5,7 +5,7 @@ export function Unauthorised(message: Message, note: string = "") {
 
 	let embed = new MessageEmbed()
 	.setColor(theme.colour)
-	.setDescription('You lack the authorisation to execute that command.' || note)
+	.setDescription(note || 'You lack the authorisation to execute that command.')
 	.setTimestamp()
 	.setFooter(theme.footer, theme.icon);
 
