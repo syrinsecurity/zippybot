@@ -26,10 +26,17 @@ export function getGroups(message: Message): string[] {
 		let perms = message.member.permissions;
 		if(perms.has("BAN_MEMBERS")) groups.push("mod");
 		if(perms.has("ADMINISTRATOR")) groups.push("admin");
+	}
 
-		//Check if message.guild is NULL
-		if(!message.guild) return groups;
-		if(message.guild.ownerID == message.author.id) groups.push("owner");
+	//Check if message.guild is NULL
+	if(!message.guild) return groups;
+	if(message.guild.ownerID == message.author.id) {
+
+		//Auto inherit lower groups
+		if(!groups.includes("mod")) groups.push("mod");
+		if(!groups.includes("admin")) groups.push("admin")
+
+		groups.push("owner");
 	}
 	
 	return groups;
