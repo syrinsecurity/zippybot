@@ -1,5 +1,5 @@
 import { Message, MessageEmbed, EmbedField } from "discord.js";
-import { theme } from "../config";
+import { theme } from "../config/config";
 
 export function Embed(message: Message, note: string = "", fields: EmbedField[] = []) {
 

@@ -1,5 +1,5 @@
 import { User, Message } from "discord.js";
-import { masters, roleBasedAuth } from "../config";
+import { masters, roleBasedAuth } from "../config/config";
 
 
 

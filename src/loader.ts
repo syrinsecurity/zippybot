@@ -20,7 +20,7 @@ function loadHandlers(client: Client): void {
 	for (let file of handlerFiles) {
 		delete require.cache[require.resolve(`./handlers/${file}`)];
 		var handlerModule = require(`./handlers/${file}`);
-		let handler: Handler = new handlerModule.Handler();
+		let handler: Handler = new handlerModule.Handler(client);
 
 		if (handler.enabled == false) continue;
 

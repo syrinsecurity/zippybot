@@ -1,20 +1,29 @@
-import { Client, Message } from "discord.js";
+import { Client, Message, Collection } from "discord.js";
 import { Handlers } from "../loader";
-import { prefix, masters } from "../config";
+import { prefix, masters } from "../config/config";
 import { Unauthorised } from "../templates/unauthorised";
 import { Embed } from "../templates/embed";
 import { getGroups } from "../modules/auth";
+import { Command } from "../commands/help";
+import { CommandCollection, getCommands, clearCommands, setCommands } from "../modules/collections";
 
 export class Handler {
 	name: string = "message handler";
-	event: string = "onMessage";
+	event: string = "message";
 
 	enabled: boolean = true
 
-	execute = (client: Client): void => {
+	commands: Collection<string, Command>
 
+	constructor(client: Client) {
 		let handlers = new Handlers();
-		let commands = handlers.loadCommands(client);
+		this.commands = handlers.loadCommands(client);
+
+		clearCommands();
+		setCommands(this.commands);
+	}
+
+	execute = (client: Client): void => {
 
 		client.on("message", async (message: Message) => {
 
@@ -24,7 +33,7 @@ export class Handler {
 			let cmd = message.content.substr(prefix.length).split(" ");
 			cmd[0] = cmd[0].toLocaleLowerCase();
 
-			let command = commands.get(cmd[0]) || commands.find(c => c.aliases && c.aliases.includes(cmd[0]))
+			let command = this.commands.get(cmd[0]) || this.commands.find(c => c.aliases && c.aliases.includes(cmd[0]))
 			if (!command) {
 				return Embed(message, "That command does not exist.");
 			}

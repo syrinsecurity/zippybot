@@ -1,5 +1,5 @@
 import { Client, Collection } from 'discord.js';
-import { token, prefix, masters} from "./config";
+import { token, prefix, masters} from "./config/config";
 import { Handlers } from './loader';
 
 var client: Client = new Client();

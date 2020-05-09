@@ -1,5 +1,5 @@
 import { Message, MessageEmbed } from "discord.js";
-import { theme } from "../config";
+import { theme } from "../config/config";
 
 export function Unauthorised(message: Message, note: string = "") {
 
