@@ -6,6 +6,47 @@ ZippyBot is a Discord bot written in Typescript.  Hot reload the whole bot inclu
 
 We are using Typescript in strict mode and Discord.js.  We have opted for a dynamic structure, this allows practically any part of the bot to be reloaded dynamically.
 
+## Quick start guide
+
+```bash
+git clone https://github.com/syrinsecurity/zippybot.git
+cd zippybot
+npm install
+```
+
+> Make sure to edit the config.
+
+```bash
+cat ./src/config/config.example.ts
+export const token: string = "";
+export const prefix: string = ",";
+
+export const masters: string[] = [
+	"<USER ID>"
+];
+
+export const theme = {
+	icon: 	"<URL TO IMAGE>",
+	colour: "#C5A8BC",
+	footer: "Bot",
+};
+
+export const roleBasedAuth: boolean = false;
+```
+
+> Rename and edit the config file.
+
+```bash
+mv ./src/config/config.example.ts ./src/config/config.ts
+nano ./src/config/config.ts
+```
+
+Now time to run the bot!
+
+```bash
+npm start
+```
+
 ## How auth works
 
 There are two methods of auth; Role based auth or permission based auth.  Role based auth uses role IDs to assign specific groups i.e. Mod or Admin.  Permission based auth checks if a user has a specific permission i.e. the group 'Mod' must have the permission 'BAN_MEMBERS' whilst the group 'Admin' must have the permission 'ADMINISTRATOR'.
