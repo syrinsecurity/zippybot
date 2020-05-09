@@ -30,12 +30,12 @@ function loadHandlers(client: Client): void {
 }
 
 function loadCommands(client: Client): Collection<string,Command> {
-	var commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
+	var commandFiles = fs.readdirSync(`./commands`); 
 
 	var commands: Collection<string,Command> = new Collection();
 
 	//Loads all commands.
-	for (let file of commandFiles) {
+	for (let file of commandFiles.filter(file => file.endsWith('.js'))) {
 		delete require.cache[require.resolve(`./commands/${file}`)];
 		let commandFile = require(`./commands/${file}`);
 		let command: Command = new commandFile.Command(client);
@@ -43,6 +43,20 @@ function loadCommands(client: Client): Collection<string,Command> {
 		if (command.enabled == false) continue;
 		
 		commands.set(command.name, command);
+	}
+
+	for (let folder of commandFiles.filter(file => file.endsWith('.js') == false)) {
+		
+		var commandFolderFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js')); 
+		for (let file of commandFolderFiles) {
+			delete require.cache[require.resolve(`./commands/${folder}/${file}`)];
+			let commandFile = require(`./commands/${folder}/${file}`);
+			let command: Command = new commandFile.Command(client);
+	
+			if (command.enabled == false) continue;
+			
+			commands.set(command.name, command);
+		}
 	}
 
 	return commands;

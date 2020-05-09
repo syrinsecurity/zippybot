@@ -49,7 +49,7 @@ npm start
 
 ## How auth works
 
-There are two methods of auth; Role based auth or permission based auth.  Role based auth uses role IDs to assign specific groups i.e. Mod or Admin.  Permission based auth checks if a user has a specific permission i.e. the group 'Mod' must have the permission 'BAN_MEMBERS' whilst the group 'Admin' must have the permission 'ADMINISTRATOR'.
+There are two methods of auth; Role based auth or permission based auth.  Role based auth uses role IDs to assign specific groups i.e. Mod or Admin.  Permission based auth checks if a user has a specific permission i.e. the group 'Mod' must have the permission 'BAN_MEMBERS' whilst the group 'Admin' must have the permission 'ADMINISTRATOR'.  Auth of a command is handled within the ./handlers/message.ts file and ./modules/auth.ts meaning there is no need to write checks within the command files as its already handled via a class property 'authorisation' (type string[]).
 
 | Group 	| Context 		|
 |:--------------|:----------------------|
@@ -68,7 +68,16 @@ Features:
 - Dynamic command loading
 - Dynamic handler loading
 - Dynamic module loading
+- Command sub folders
 
+## Development
+
+| 				| 					|
+|:-----------------------------:|:-------------------------------------|
+| ![Commands folder structure](./.github/assets/command-structure.PNG) | Sub folders can be used in the commands folder to organise categories of commands.  This helps a lot with organisation and cleanliness. |
+| ![Dynamic help command](./.github/assets/dynamic-help.PNG) | Dynamic help command.  The help command builds it self, commands are automatically organised based on their categories.|
+
+The help command only shows relevant commands to the user i.e. if they are not a admin they do not need to see admin commands. 
 
 ## License
 
