@@ -73,7 +73,7 @@ Features:
 ## Development
 
 | Image				| 					|
-|:------------------------------|:-------------------------------------|
+|:------------------------------|:--------------------------------------|
 | ![Commands folder structure](./.github/assets/command-structure.PNG) | Sub folders can be used in the commands folder to organise categories of commands.  This helps a lot with organisation and cleanliness. |
 | ![Dynamic help command](./.github/assets/dynamic-help.PNG) | Dynamic help command.  The help command builds it self, commands are automatically organised based on their categories.|
 
