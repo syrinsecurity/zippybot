@@ -13,6 +13,7 @@ export class Handlers {
 function loadHandlers(client: Client): void {
 
 	delete require.cache[require.resolve(`./loader.js`)];
+	delete require.cache[require.resolve(`./config/config.js`)];
 	clearModuleCache();
 	
 	var handlerFiles = fs.readdirSync(`./handlers`).filter(file => file.endsWith('.js'));
@@ -42,6 +43,8 @@ function loadCommands(client: Client): Collection<string,Command> {
 
 		if (command.enabled == false) continue;
 		
+		if (commands.has(command.name)) console.log(` [!] COMMAND CONFLICT! The command "${command.name}" | "${command.description}" is conflicting with "${commands.get(command.name)?.name}" | "${commands.get(command.name)?.description}"`);
+		
 		commands.set(command.name, command);
 	}
 
@@ -55,6 +58,8 @@ function loadCommands(client: Client): Collection<string,Command> {
 	
 			if (command.enabled == false) continue;
 			
+			if (commands.has(command.name)) console.log(` [!] COMMAND CONFLICT! The command "${command.name}" | "${command.description}" is conflicting with "${commands.get(command.name)?.name}" | "${commands.get(command.name)?.description}"`);
+
 			commands.set(command.name, command);
 		}
 	}
