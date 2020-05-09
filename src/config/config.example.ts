@@ -11,5 +11,10 @@ export const theme = {
 	footer: "Bot",
 };
 
+export const authRoles = {
+	mod: "",
+	admin: ""
+}
+
 //Role based auth uses role IDs whilst perm based auth uses the perms a member has
 export const roleBasedAuth: boolean = false;

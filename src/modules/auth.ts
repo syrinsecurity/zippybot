@@ -1,5 +1,5 @@
 import { User, Message } from "discord.js";
-import { masters, roleBasedAuth } from "../config/config";
+import { masters, roleBasedAuth, authRoles } from "../config/config";
 
 
 
@@ -19,8 +19,8 @@ export function getGroups(message: Message): string[] {
 		//Role based group assignment
 		let roles = message.member.roles.cache;
 
-		if (roles.has("708386103618437200")) groups.push("mod"); //TODO: update hard coded ids to db
-		if (roles.has("708324993116667926")) groups.push("admin");
+		if (roles.has(authRoles.mod)) groups.push("mod");
+		if (roles.has(authRoles.admin)) groups.push("admin");
 	} else {
 		//Perms based group assignment
 		let perms = message.member.permissions;
