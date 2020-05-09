@@ -1,5 +1,25 @@
-# DiscordBot
+# ZippyBot
 
+ZippyBot is a Discord bot written in Typescript.  Hot reload the whole bot including; Handlers, Commands and modules without having to restart the bot.  This can all be done by one single command, adding flexibility and potential for rapid development.
+
+## How it's made
+
+We are using Typescript in strict mode and Discord.js.  We have opted for a dynamic structure, this allows practically any part of the bot to be reloaded dynamically.
+
+## How auth works
+
+There are two methods of auth; Role based auth or permission based auth.  Role based auth uses role IDs to assign specific groups i.e. Mod or Admin.  Permission based auth checks if a user has a specific permission i.e. the group 'Mod' must have the permission 'BAN_MEMBERS' whilst the group 'Admin' must have the permission 'ADMINISTRATOR'.
+
+| Group 	| Context 		|
+|:--------------|:----------------------|
+| User		| DM channel (only)	|
+| Member	| Guild channel (only)	|
+| Mod		| Guild channel (only)	|
+| Admin		| Guild channel (only)	|
+| Root		| Anywhere		|
+
+> A key thing to remember is that groups are scoped to specific contexts as listed above.
+> The group 'Root' is also known as a master, as shown in the config file.
 
 Features:
 
@@ -7,3 +27,23 @@ Features:
 - Dynamic command loading
 - Dynamic handler loading
 - Dynamic module loading
+
+
+## License
+
+YOU CAN NOT USE THIS MATERIAL FOR COMMERCIAL USE! YOU CAN NOT USE THIS
+MATERIAL IN A COMMERCIAL/FOR PROFIT ORGANISATION! THIS MATERIAL CAN ONLY
+BE USED IN A NON-PROFIT ORGANISATION OR FOR PERSONAL USE. DERIVATIVES MUST NOT
+BE DISTRIBUTED. ANY AND ALL USES OF THIS MATERIAL OUTSIDE THE CONTEXT OF
+PERSONAL USE MUST PURCHASE A LICENSE FROM THE COPYRIGHT OWNER. YOU AGREE
+NOT TO USE THIS MATERIAL IN A FOR-PROFIT BUSINESS, YOU AGREE TO NOT DISTRIBUTE
+DERIVATIVES, YOU AGREE TO NOT USE THIS MATERIAL FOR COMMERCIAL USE, YOU AGREE
+TO PURCHASE A LICENSE IF YOU INTEND TO USE THIS MATERIAL IN A RESTRICTED SETTING
+(AS PREVIOUSLY MENTIONED). SYRINSECURITY AND IT'S BOARD RETAINS FULL EXCLUSIVE
+INTELLECTUAL PROPERTY RIGHTS. WE RETAIN THE RIGHT TO MODIFY THE LICENSE AT ANY
+TIME, FOR ANY REASON. WE RETAIN THE RIGHT TO DENY YOU USE OF OUR MATERIAL FOR
+ANY REASON EVEN IF YOU ARE USING THE MATERIAL FOR PERSONAL USE ONLY. WE RETAIN
+THE RIGHT TO MODIFY, UPDATE, DELETE AND PUBLISH OUR MATERIAL HOW WE SEE FIT.
+THIS IS A NON EXCLUSIVE NON TRANSFERABLE LICENSE WITH NO WARRANTY.
+
+License queries: legal@syrinsecurity.net

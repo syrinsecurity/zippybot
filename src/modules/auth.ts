@@ -24,7 +24,7 @@ export function getGroups(message: Message): string[] {
 	} else {
 		//Perms based group assignment
 		let perms = message.member.permissions;
-		if(perms.has("KICK_MEMBERS")) groups.push("mod");
+		if(perms.has("BAN_MEMBERS")) groups.push("mod");
 		if(perms.has("ADMINISTRATOR")) groups.push("admin");
 
 		//Check if message.guild is NULL
