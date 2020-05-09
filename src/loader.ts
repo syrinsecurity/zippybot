@@ -12,8 +12,9 @@ export class Handlers {
 
 function loadHandlers(client: Client): void {
 
+	delete require.cache[require.resolve(`./loader.js`)];
 	clearModuleCache();
-
+	
 	var handlerFiles = fs.readdirSync(`./handlers`).filter(file => file.endsWith('.js'));
 
 	//Loads all handlers

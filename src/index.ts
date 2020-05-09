@@ -13,4 +13,6 @@ client.on("ready", () => {
 });
 
 
-client.login(token);
+client.login(token).catch(reason => {
+	console.error(reason);
+});

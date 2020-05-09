@@ -27,10 +27,7 @@ export class Command {
 	}
 
 	async execute(message: Message, cmd: string[]): Promise<void> {
-		if (masters.includes(message.author.id) == false) {
-			return Unauthorised(message);
-		}
-
+		
 		this._client.removeAllListeners();
 		let handlers = new Handlers();
 		handlers.loadAll(this._client);
