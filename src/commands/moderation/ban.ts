@@ -49,8 +49,6 @@ export class Command {
 		const member = await message.guild?.member(id);
 		if (!member) return Embed(message, `Sorry we could not find that user.`);
 
-		console.log("Them", member.roles.highest.position, "You", message.member?.roles.highest.position)
-
 		//If the user to be banned has a higher role than the banner prevent it
 		if (!message.member) return Embed(message, `Sorry we are having problems finding your user when calculating if you have the permission to ban this user.`);
 		if (member.roles.highest.position >= message.member.roles.highest.position) return Embed(message, `Did not ban the user. The user you are trying to ban is either on the same level or higher than you.`);
