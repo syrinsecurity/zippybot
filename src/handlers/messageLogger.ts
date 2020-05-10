@@ -70,8 +70,6 @@ export class Handler {
 
 			this.logBuffer.push(msg);
 
-
-			console.log(message.id)
 			//Checks if 2 seconds has elapsed
 			//if(this.lastInsert < timeNow + 5) {
 			//if(message.content.includes("#")) {
