@@ -1,6 +1,7 @@
 import { prefix } from "../../config/config";
 import { Message, Client, TextChannel, PermissionOverwrites, Webhook, Collection } from "discord.js";
 import { Embed } from "../../templates/embed";
+import { escapeMarkdown } from "../../modules/escape";
 
 export class Command {
 
@@ -51,7 +52,7 @@ export class Command {
 					await hook.edit({channel: newChannel.id}).catch( error => {
 						success = false;
 						console.log(error);
-						Embed(message, `Failed to migrate ${hook.name} to new channel.`);
+						Embed(message, `Failed to migrate \`${escapeMarkdown(hook.name)}\` to new channel.`);
 					});
 				})
 			}

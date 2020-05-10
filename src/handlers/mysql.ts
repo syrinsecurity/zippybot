@@ -12,7 +12,6 @@ export var db = mysql.createConnection({
 
 db.connect( (err) => {
 	if (err) return console.log(err);
-	console.log(" [i] Connected to mysql db");
 });
 
 

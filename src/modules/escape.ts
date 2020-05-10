@@ -1,8 +1,6 @@
 export function escapeMarkdown(str: string): string {
 
-	str.replace("`", "");
-	str.replace("*", "");
-	str.replace("_", "");
+	str = str.replace(/`/g, "",);
 
 	return str;
 }
