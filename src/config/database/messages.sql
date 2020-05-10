@@ -1,3 +1,4 @@
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -25,6 +26,10 @@ CREATE TABLE `messages` (
   `userID` bigint(20) NOT NULL,
   `username` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `tag` varchar(4) NOT NULL,
+  `channel` bigint(20) NOT NULL,
+  `channelName` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `guild` bigint(20) NOT NULL,
+  `guildName` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `attachmentCount` int(11) NOT NULL DEFAULT '0',
   `attachments` text NOT NULL,
   `mentionUserCount` int(11) NOT NULL DEFAULT '0',

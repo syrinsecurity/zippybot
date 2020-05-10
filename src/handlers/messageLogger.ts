@@ -38,7 +38,12 @@ export class Handler {
 				});
 			});
 
-			this.logBuffer.push([
+	
+			const channelName = (message.channel.type == "text") ? message.channel.name : (message.channel.type == "dm") ? message.channel.recipient.username : message.channel.name
+			const guildID = (message.guild) ? message.guild.id : message.channel.id;
+			const guildName = (message.guild) ? message.guild.name : "DM";
+
+			const msg = [
 				message.id,
 				message.content,
 				message.author.username,
@@ -55,18 +60,29 @@ export class Handler {
 				getGroups(message).includes("mod") ?   1 : 0,
 				getGroups(message).includes("admin") ? true : false,
 				getGroups(message).includes("staff") ? true : false,
-				message.author.bot
-			]);
+				message.author.bot,
 
+				message.channel.id,
+				channelName,
+				guildID,
+				guildName
+			];
+
+			this.logBuffer.push(msg);
+
+
+			console.log(message.id)
 			//Checks if 2 seconds has elapsed
-			if(this.lastInsert < timeNow + 2) {
-				db.query("INSERT INTO messages (`id`, `content`, `username`, `userID`, `tag`, `attachmentCount`, `attachments`, `mentionUserCount`, `mentionRoleCount`, `created`, `mod`, `admin`, `staff`, `bot`) VALUES ?", [this.logBuffer], (err, result) => {
-					if (err) return console.log(err);
-					this.logBuffer = [];
+			//if(this.lastInsert < timeNow + 5) {
+			//if(message.content.includes("#")) {
+				this.lastInsert = timeNow;
+				const messages = this.logBuffer;
+				this.logBuffer = [];
 
-					this.lastInsert = timeNow;
+				db.query("INSERT INTO messages (`id`, `content`, `username`, `userID`, `tag`, `attachmentCount`, `attachments`, `mentionUserCount`, `mentionRoleCount`, `created`, `mod`, `admin`, `staff`, `bot`, `channel`, `channelName`, `guild`, `guildName`) VALUES ?", [messages], (err, result) => {
+					if (err) return console.log(err);
 				});
-			}
+			//}
 		});
 	};
 
