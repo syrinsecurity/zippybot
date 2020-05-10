@@ -19,10 +19,6 @@ export class Handler {
 
 	execute = (client: Client): void => {
 
-		window.setInterval(function(){
-			
-		}, 5000);
-
 		client.on("message", async (message: Message) => {
 			const timeNow: number = Date.now() / 1000;
 
