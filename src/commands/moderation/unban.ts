@@ -1,6 +1,8 @@
 import { prefix } from "../../config/config";
 import { Message, Client } from "discord.js";
 import { Embed } from "../../templates/embed";
+import { escapeMarkdown } from '../../modules/escape';
+
 
 export class Command {
 
@@ -34,7 +36,7 @@ export class Command {
 		if (message.author.id == id) return Embed(message, `You cannot unban your self.`);
 
 		message.guild?.members.unban(id).then( (user) => {
-			Embed(message, `The user \`${escape(user.username)}\` has been unbanned.`);
+			Embed(message, `The user \`${escapeMarkdown(user.username)}\` has been unbanned.`);
 		}).catch( () => {
 			Embed(message, `Sorry, this user could not be unbanned.`);
 		});

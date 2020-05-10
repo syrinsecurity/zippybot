@@ -1,6 +1,8 @@
 import { prefix } from "../../config/config";
 import { Message, Client } from "discord.js";
 import { Embed } from "../../templates/embed";
+import { escapeMarkdown } from '../../modules/escape';
+
 
 export class Command {
 
@@ -55,10 +57,10 @@ export class Command {
 
 		if(!member.bannable) return Embed(message, `Sorry i can not ban this user, make sure I have all the permission i need.`);
 		member.ban({reason: reason, days: days}).then(() => {
-			Embed(message, `The user \`${escape(member.user.username)}\` has been successfully banned.`);
+			Embed(message, `The user \`${escapeMarkdown(member.user.username)}\` has been successfully banned.`);
 		}).catch( error => {
 			console.log(error);
-			Embed(message, `The user \`${escape(member.user.username)}\` could not be banned due to an error.`)
+			Embed(message, `The user \`${escapeMarkdown(member.user.username)}\` could not be banned due to an error.`)
 		});
 	};
 }
