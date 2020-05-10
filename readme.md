@@ -69,6 +69,10 @@ Features:
 - Dynamic handler loading
 - Dynamic module loading
 - Command sub folders
+- Mysql Database
+- Logging
+- Nuke command (comeletly erase and rebuild a channel)
+- Webhook nuke protection (moves any webhooks out of the channel being nuked then into the new channel)
 
 ## Development
 
