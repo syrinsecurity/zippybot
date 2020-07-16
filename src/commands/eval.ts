@@ -1,9 +1,6 @@
-import { prefix, masters } from "../config/config";
+import { prefix } from "../config/config";
 import { Message, Client, MessageAttachment } from "discord.js";
-import { Unauthorised } from "../templates/unauthorised";
-import { Handlers } from "../loader";
 import { Embed } from "../templates/embed";
-import { promises } from "dns";
 
 export class Command {
 

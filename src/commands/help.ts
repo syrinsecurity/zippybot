@@ -1,7 +1,6 @@
 import { prefix } from "../config/config";
 import { Message, Client } from "discord.js";
 import { Embed } from "../templates/embed";
-import { Handler } from "../handlers/message";
 import { CommandCollection } from "../modules/collections";
 import { getGroups } from "../modules/auth";
 
